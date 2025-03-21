@@ -1,6 +1,10 @@
+import { useState } from "react"
 import Header from "./Header"
-
 const Login=()=>{
+    const [isSignInForm,setIsSignInForm]=useState(true);
+    const toggleSignInForm=()=>{
+        setIsSignInForm(!isSignInForm);
+    }
     return (
         <div>
             <Header/>
@@ -10,11 +14,13 @@ const Login=()=>{
                 alt="bg">
                 </img>
             </div>
-            <form className="p-12 bg-opacity absolute w-3/12 my-50 mx-auto right-0 left-0 text-white rounded-lg ">
-                <h1 className="font-bold text-3xl py-4">Sign In</h1>
-                <input type="text" placeholder=" Email Address" className="bg-gray-700 text-black rounded-md p-4 my-4 w-full"></input>
-                <input type="password" placeholder="Password" className="bg-gray-700 rounded-md text-black p-4 my-4 w-full"></input>
-                <button className="bg-red-500 p-4 my-6 text-cyan-50 rounded-md w-full">Sign In</button>
+            <form className="p-12 bg-black absolute w-3/12 my-30 mx-auto right-0 left-0 text-white rounded-lg opacity-80">
+                <h1 className="font-bold text-3xl py-4">{isSignInForm ? "Sign In" : "Sign Up"}</h1>
+                {!isSignInForm && (<input type="text" placeholder=" Name" className="bg-gray-700 text-black rounded-md p-4 my-4 w-full"></input>)}
+                <input type="text" placeholder=" Email Address" className="bg-gray-700 text-white    rounded-md p-4 my-4 w-full"></input>
+                <input type="password" placeholder="Password" className="bg-gray-700 rounded-md text-white p-4 my-4 w-full"></input>
+                <button className="bg-red-500 cursor-pointer p-4 my-6 text-cyan-50 rounded-md w-full">{isSignInForm?"Sign In":"Sign Up"}</button>
+                <p className="py-4 cursor-pointer"  onClick={toggleSignInForm}>{isSignInForm?"New to Nerflix? Sign Up Now":"Already registered? Sign In Now"}</p>
             </form>
         </div>
     ) 
