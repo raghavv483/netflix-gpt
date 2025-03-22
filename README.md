@@ -4,6 +4,9 @@
 - Routign
 - Form validation
 - useRef hook
+- Firebase setup
+- Create a signup/in account in firebase  
+- setup redux toolkit
 
 # Features
 - Login/Sign Up
