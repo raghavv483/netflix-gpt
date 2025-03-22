@@ -1,6 +1,9 @@
 # Netflix-gpt
 - Header
 - Login Form
+- Routign
+- Form validation
+- useRef hook
 
 # Features
 - Login/Sign Up
