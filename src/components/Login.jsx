@@ -3,10 +3,12 @@ import Header from "./Header"
 import { checkValidData } from "../utils/validate";
 import {createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
 
 const Login=()=>{
     const [isSignInForm,setIsSignInForm]=useState(true);
     const [errorMessage,iseErrorMessage]=useState(null);
+    const navigate=useNavigate();
     const toggleSignInForm=()=>{
         setIsSignInForm(!isSignInForm);
     }
@@ -23,10 +25,11 @@ const Login=()=>{
         //if message !=NULL THE sign in sign up whill be there
         if(!isSignInForm){
             //signup page
-            createUserWithEmailAndPassword(auth,email.current.value,password.current.value )
+            createUserWithEmailAndPassword(auth,email.current.value,password.current.value)
             .then((userCredential) => {
             const user = userCredential.user;
             console.log(user)
+            navigate("/browse")
             })
              .catch((error) => {
               const errorCode = error.code;
@@ -34,13 +37,15 @@ const Login=()=>{
             });
         }
         else{
-            signInWithEmailAndPassword(auth, email, password)
-            then((userCredential) => {
+            signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+            .then((userCredential) => {
             const user = userCredential.user;
-            console.log(user);
-            
+            console.log("HI");
+            navigate("/browse")
           })
             .catch((error) => {
+                console.log("raghav");
+                
              const errorCode = error.code;
              const errorMessage = error.message;
           });

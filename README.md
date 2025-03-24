@@ -6,7 +6,7 @@
 - useRef hook
 - Firebase setup
 - Create a signup/in account in firebase  
-- setup redux toolkit
+- setup redux toolkit with userSlice
 
 # Features
 - Login/Sign Up
