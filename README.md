@@ -7,6 +7,9 @@
 - Firebase setup
 - Create a signup/in account in firebase  
 - setup redux toolkit with userSlice
+- implemented signout
+- update profiel
+- fetch movies from tmdb api
 
 # Features
 - Login/Sign Up
