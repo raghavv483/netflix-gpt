@@ -16,6 +16,8 @@
 - added hardcoded lin ks to constant.js
 - Register for TMDB api & create an app & get access token
 - Get data from tmdb now playing movies list API
+- Created custom hook(useNowPlaying movies) for cleanliness in browse componenet and shifted the code to custom hook
+- 
 
 
 
