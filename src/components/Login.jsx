@@ -31,7 +31,7 @@ const Login=()=>{
             createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
         .then((userCredential) => {
         const user = userCredential.user;
-        console.log("User created:", user); // Log user details
+        
 
         return updateProfile(user, {
             displayName: name.current.value,
@@ -55,7 +55,7 @@ const Login=()=>{
             const user = userCredential.user;
           })
             .catch((error) => {
-                console.log("raghav");
+                
                 
              const errorCode = error.code;
              const errorMessage = error.message;
