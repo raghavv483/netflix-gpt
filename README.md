@@ -16,8 +16,18 @@
 - added hardcoded lin ks to constant.js
 - Register for TMDB api & create an app & get access token
 - Get data from tmdb now playing movies list API
-- Created custom hook(useNowPlaying movies) for cleanliness in browse componenet and shifted the code to custom hook
-- 
+- Created custom hook(useNowPlaying movies) for cleanliness in browse componenet and shifted the code to    custom hook
+- Update the strore with movies data
+- Planning for main container and secondary container
+- Fetch data for trailer video
+- update store with trailer video data
+- embedded the youtube video and make it autoplay and mute
+- Tailwind classes to make main container awesome
+- Build secondary component
+- Build Movie List
+- Build Movie Card
+- TMDB Image CDN URL
+- usePopularMovies Custom hook
 
 
 
