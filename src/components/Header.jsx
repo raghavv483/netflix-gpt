@@ -2,21 +2,28 @@ import React, { useEffect } from 'react'
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser} from '../utils/userSlice';
 import { useLocation } from 'react-router-dom';
 import { LOGO, signOutLogo } from '../utils/constants';
+import { toggleGptSearchView } from '../utils/gptSlice';
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
+  const showGptSearch=useSelector((store)=>store.gpt.showGptSearch);
   const handleSignOut=()=>{
     signOut(auth).then(() => {
      // Sign-out successful.
     }).catch((error) => {
       navigate("/error");
 });
+  }
+
+  const handleGptSearchClick=()=>{
+    //toggle GPT search
+    dispatch(toggleGptSearchView());
   }
 
     useEffect((()=>{
@@ -46,6 +53,9 @@ const Header = () => {
       src={LOGO}
       alt="logo"></img>
       {location.pathname === "/browse" && <div className='flex p-2'>
+        <button className='text-white cursor-pointer p-4 m-2 font-bold bg-purple-600 rounded-md'
+        onClick={handleGptSearchClick}>
+          {showGptSearch ? "Home Page" : "GPT Search"}</button>
         <img 
         alt='signOutLogo'
         src={signOutLogo}
