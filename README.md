@@ -30,7 +30,7 @@
 - usePopularMovies Custom hook
 - GPT search feature
 - GPT search Bar
-- Integrate GPT APIs
+- Integrate gemini APIs
 
 
 # Features

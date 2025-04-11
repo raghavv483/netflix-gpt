@@ -1,49 +1,24 @@
-
-import { useSelector } from 'react-redux';
-import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
-import usePopularMovies from '../hooks/usePopularMovies';
-import useTopRatedMovies from '../hooks/useTopRatedMovies';
-import useUpcomingMovies from '../hooks/useUpcomingMovies';
-import GptSearch from './GptSearch';
-import Header from './Header'
-import MainContainer from './MainContainer';
-import SecondaryContainer from './SecondaryContainer';
-
+import Header from "./Header";
+import useMovieFetch from "../hooks/useMovieFetch";
+import { useSelector } from "react-redux";
+import BrowseHero from "./BrowseHero";
+import BrowseRest from "./BrowseRest";
 
 const Browse = () => {
-
-  const showGptSearch = useSelector(store => store.gpt.showGptSearch);
-  
-  useNowPlayingMovies();
-  usePopularMovies();
-  useTopRatedMovies();
-  useUpcomingMovies();
-
-
+  useMovieFetch();
+  const nowPlayingMovies = useSelector(
+    (store) => store.movieData.nowPlayingList
+  );
+  const movieList = useSelector((store) => store.movieData);
+  if (!nowPlayingMovies) return;
+  const { original_title, overview, id } = nowPlayingMovies[0];
   return (
-    <div>
-      <Header/> 
-
-      {
-        showGptSearch? (<GptSearch/>) :
-         (
-        <>
-        <MainContainer/>
-        <SecondaryContainer/>
-        </>
-      )}
-      
-      
-      {/*
-        Main Container
-          -VideoTitle
-          -VideoBackground
-        SecondaryContainer
-          -MovieList * n
-          - cards *n
-      */}
+    <div className="h-screen w-full">
+      <Header />
+      <BrowseHero title={original_title} overview={overview} movieId={id} />
+      <BrowseRest movieData={movieList} />
+     
     </div>
-  )
-}
-
-export default Browse
+  );
+};
+export default Browse;
